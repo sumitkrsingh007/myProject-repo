@@ -18,7 +18,7 @@ FROM fct_ratings
 WHERE rating IS NOT NULL
 
 {% if is_incremental() %}
-    AND rating_timestamp > (SELECT MAX(rating_timestamp)) FROM {{ this }}
+    AND rating_timestamp > (SELECT MAX(rating_timestamp) FROM {{ this }})
 {% endif %}
 
 
